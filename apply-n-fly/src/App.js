@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Form from './components/Form';
+import Feedback from './components/Feedback';
+import FollowUpList from './components/FollowUpList';
 
-function App() {
+const App = () => {
+  const [followUps, setFollowUps] = useState([]);
+
+  const addFollowUp = (followUp) => {
+    setFollowUps([...followUps, followUp]);
+    // You can send the followUp data to your backend for processing here
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Form onFollowUpSubmit={addFollowUp} />
+      <Feedback />
+      <FollowUpList followUps={followUps} />
     </div>
   );
-}
+};
 
 export default App;
