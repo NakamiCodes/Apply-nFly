@@ -1,25 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { GoogleLogin } from 'react-google-login';
 
-const SignIn = ({ onFollowUpSubmit }) => {
-  const [companyName, setCompanyName] = useState('');
-  // Other form fields state variables
+const CLIENT_ID = 'your_client_id_here';
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Validation and API calls can be performed here
-    const followUpData = {
-      companyName,
-      // Other form data
-    };
-    onFollowUpSubmit(followUpData);
+const SignIn = () => {
+  const onSuccess = (res) => {
+    console.log('Login Success: currentUser:', res.profileObj);
+    // TODO: handle successful login
+  };
+
+  const onFailure = (res) => {
+    console.log('Login failed: res:', res);
+    // TODO: handle failed login
   };
 
   return (
-    <div className="Form">
-      <form onSubmit={handleSubmit}>
-        {/* Input fields for company name, job description, Google Sheets, Gmail account */}
-        <button type="submit">Schedule Follow-up</button>
-      </form>
+    <div>
+      <GoogleLogin
+        clientId={CLIENT_ID}
+        buttonText="Sign in with Google"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={'single_host_origin'}
+        responseType='code,token'
+      />
     </div>
   );
 };
