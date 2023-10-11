@@ -1,41 +1,58 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+// import gapi from 'googleapis';
 
-function Connections() {
-    const [sheetsLink, setSheetsLink] = useState('');
-    const [gmailLink, setGmailLink] = useState('');
+// const GOOGLE_SHEETS_API_ENDPOINT = 'https://sheets.googleapis.com/v4/spreadsheets/';
 
-    const handleSheetsLinkChange = (event) => {
-        setSheetsLink(event.target.value);
-    };
+// function Connections() {
+//   const [sheetsLink, setSheetsLink] = useState('');
+//   const [gmailLink, setGmailLink] = useState('');
 
-    const handleGmailLinkChange = (event) => {
-        setGmailLink(event.target.value);
-    };
+//   const handleSheetsLinkChange = (event) => {
+//     setSheetsLink(event.target.value);
+//   };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(`Sheets link: ${sheetsLink}`);
-        console.log(`Gmail link: ${gmailLink}`);
-    };
+//   const handleGmailLinkChange = (event) => {
+//     setGmailLink(event.target.value);
+//   };
 
-    return (
-        <div>
-            <h1>Connections</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Google Sheets Link:
-                    <input type="text" value={sheetsLink} onChange={handleSheetsLinkChange} />
-                </label>
-                <br />
-                <label>
-                    Gmail Link:
-                    <input type="text" value={gmailLink} onChange={handleGmailLinkChange} />
-                </label>
-                <br />
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    );
-}
+//   const makeGoogleSheetsAPICall = async () => {
+//     // Load the Google Sheets API library
+//     await gapi.client.load('sheets', 'v4');
 
-export default Connections;
+//     // Create a new Google Sheets client object
+//     const sheetsClient = new gapi.client.sheets.Spreadsheets();
+
+//     // Make the API call
+//     const response = await sheetsClient.spreadsheets.get({
+//       spreadsheetId: sheetsLink,
+//     });
+
+//     // Handle the response
+//   };
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     makeGoogleSheetsAPICall();
+//   };
+
+//   return (
+//     <div>
+//       <h1>Connections</h1>
+//       <form onSubmit={handleSubmit}>
+//         <label>
+//           Google Sheets Link:
+//           <input type="text" value={sheetsLink} onChange={handleSheetsLinkChange} />
+//         </label>
+//         <br />
+//         <label>
+//           Gmail Link:
+//           <input type="text" value={gmailLink} onChange={handleGmailLinkChange} />
+//         </label>
+//         <br />
+//         <button type="submit">Submit</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Connections;
